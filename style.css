@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #0a2a5c; /* Deep intellectual blue */
+    --secondary-color: #5188fe; /* Brighter blue for accents */
+    --cicle1-color: #91afee;
+    --cicle2-color: #6782ae;
+    --text-color: #f0f0f0;
+    --bg-color: #0d162a;
+    --section-bg-color: rgba(10, 42, 92, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+.hero-logo {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  margin: 0 auto 0 auto;
+}
+
+/* Animated Hero Logo */
+.animated-logo .circle-bg {
+    position: absolute;
+    width: 133px;
+    height: 133px;
+    top: 33px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+.animated-logo .circle-bg.left {
+    left: 20px; /* Spacing adjusted */
+    border-color: var(--cicle1-color); /* Color 1 */
+    z-index: 2; /* Bring to front */
+}
+.animated-logo .circle-bg.right {
+    left: 30px; /* Spacing further narrowed */
+    border-color: var(--cicle2-color); /* Color 2 */
+    z-index: 1; /* Send to back */
+}
+
+/* Orbit animation */
+.animated-logo .orbit-container {
+    position: absolute;
+    top: 99.5px; /* 33 + (133 / 2) */
+    left: 86.5px; /* 20 + (133 / 2) */
+    width:1px;
+    height: 1px;
+    animation: orbit 10s linear infinite;
+    z-index: 3; /* Ensure orbit is on top of both circles */
+}
+
+.animated-logo .hero-orbiting-dot {
+    position: absolute;
+    transform: translate(-50%, -72px);
+    width: 16px;
+    height: 16px;
+    background-color: var(--cicle1-color);
+    border-radius: 50%;
+}
+
+.section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid rgba(62, 124, 255, 0.2);
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    z-index: 2;
+}
+
+h1, h2, h3 {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom:3rem;
+    color: var(--secondary-color);
+    
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 1.5rem auto;
+}
+
+/* Header & Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    z-index: 100;
+    background: rgba(3, 10, 26, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(62, 124, 255, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--secondary-color);
+}
+
+/* Logo Placeholder Animation */
+.logo-placeholder {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+.outer-circle, .inner-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-color);
+}
+.outer-circle { top: 0; left: 0; width: 100%; height: 100%; }
+.inner-circle { top: 5px; left: 5px; width: 30px; height: 30px; }
+.orbiting-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform-origin: -12px 0;
+    animation: orbit 8s linear infinite;
+}
+
+@keyframes orbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Hero Section */
+#hero {
+    /* 
+      아래 'url' 안에 배경으로 사용할 이미지의 주소를 붙여넣으세요. 
+      예: background-image: url('https://images.pexels.com/photos/12345/sample.jpg');
+    */
+    background-image: url('bg2.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(3, 10, 26, 0.75); /* 배경 오버레이, 0.75는 투명도 */
+    z-index: 1;
+}
+
+.hero-logo-placeholder {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--secondary-color);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 0 auto 1.5rem auto;
+    background: rgba(3, 10, 26, 0.5);
+}
+
+#hero .company-name {
+    font-size: 2.5rem;
+    margin-bottom: 0rem;
+    color: #fff;
+}
+
+#hero h2 {
+    font-size: 2rem;
+
+    font-weight: bold; /* 또는 700 */
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#hero .subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+    margin-top: -1rem; /* 이 줄을 추가하여 위쪽 여백을 줍니다 */
+}
+
+/* Scroll Down Arrow */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+.scroll-down a {
+    display: block;
+    width: 24px;
+    height: 40px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 20px;
+    position: relative;
+}
+.scroll-down span {
+    display: block;
+    width: 4px;
+    height: 8px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    transform: translateX(-50%);
+    animation: scroll-indicator 2s infinite;
+}
+
+@keyframes scroll-indicator {
+    0% { top: 8px; opacity: 1; }
+    100% { top: 22px; opacity: 0; }
+}
+
+/* Technology Section */
+.two-columns {
+    display: flex;
+    gap: 3rem;
+    text-align: left;
+    margin-bottom: 3rem;
+}
+.column { flex: 1; }
+
+.tech-diagram {
+    border: 1px solid var(--secondary-color);
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    background: rgba(62, 124, 255, 0.1);
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.tech-diagram-img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below image */
+    margin: 0 auto; /* Center the image */
+}
+
+/* Solutions Section */
+.solution-item {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    text-align: left;
+    margin-bottom: 4rem;
+}
+.solution-item.reverse { flex-direction: row-reverse; }
+.solution-text { flex: 1.5; }
+.solution-visual { flex: 1; }
+
+.features {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+.features li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.placeholder-visual {
+    border: 2px dashed var(--secondary-color);
+    border-radius: 8px;
+    padding: 4rem 2rem;
+    text-align: center;
+    font-weight: bold;
+    color: var(--secondary-color);
+    background: rgba(62, 124, 255, 0.05);
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.solution-img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below image */
+    margin: 0 auto; /* Center the image */
+    border-radius: 8px; /* Match other visual elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+/* Contact Section */
+#contact h3 {
+    font-weight: 300;
+    margin-top: -2rem;
+    margin-bottom: 4rem;
+}
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+.contact-logo {
+    max-width: 200px; /* Adjust size as needed */
+    height: auto;
+    display: block;
+    margin-bottom: 1rem;
+}
+.email-contact {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+    font-size: 1.5rem; /* Adjust font size for the whole line */
+}
+
+.email-contact i {
+    color: var(--secondary-color); /* Icon color */
+    font-size: 1.8rem; /* Icon size */
+}
+
+.email-contact a {
+    color: var(--text-color); /* Link color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.email-contact a:hover {
+    color: var(--secondary-color); /* Hover effect */
+}
+.contact-info p { font-size: 1.5rem; }
+.contact-info a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: text-shadow 0.3s;
+}
+.contact-info a:hover {
+    text-shadow: 0 0 10px var(--secondary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    .section { height: auto; min-height: 100vh; padding: 6rem 5% 4rem 5%; }
+    .two-columns { flex-direction: column; }
+    .solution-item, .solution-item.reverse {
+        flex-direction: column;
+    }
+    nav ul { display: none; } /* Simple responsive solution */
+}
+
+/* Footer */
+footer {
+    padding: 2rem 5%;
+    text-align: center;
+    color: rgba(240, 240, 240, 0.5);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(62, 124, 255, 0.2);
+    background-color: var(--bg-color);
+}
