@@ -426,7 +426,13 @@ nav a:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
-    h1 { font-size: 2.5rem; }
+    html {
+        /* 
+         * 모바일 화면에서 rem 단위의 기준이 되는 폰트 크기를 줄입니다.
+         * 100% * 0.7 = 70%, 약 30% 폰트 크기 축소 효과가 있습니다.
+        */
+        font-size: 70%;
+    }
     h2 { font-size: 1.8rem; }
     .section { height: auto; min-height: 100vh; padding: 6rem 5% 4rem 5%; }
     .two-columns { flex-direction: column; }
